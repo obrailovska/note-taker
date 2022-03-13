@@ -37,6 +37,7 @@ router.delete("/notes/:id", (req, res) => {
   //   equals list of objects w/o same id
   const newDb = db.filter((note) => note.id !== id);
 
+  // update json file
   fs.writeFile(
     path.join(__dirname, "../../db/db.json"),
     JSON.stringify(newDb),
@@ -46,7 +47,7 @@ router.delete("/notes/:id", (req, res) => {
       }
     }
   );
-  console.log("wrote to file");
+
   res.json(newDb);
 });
 
